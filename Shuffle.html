@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shuffle Html</title>
+	<style>
+		ul,li{
+			list-style-type: none;
+			display: inline-block;
+		}
+		body{
+			background-color: black;
+		}
+		/* The animation code */
+		@keyframes rk_fade {
+		    0%{ opacity:1; }
+		    /*10%{ opacity:0; }
+		    20%{ opacity:1; }
+		    30%{ opacity:0; }
+		    40%{ opacity:0; }
+		    50%{ opacity:1; }
+		    60%{ opacity:0; }
+		    70%{ opacity:1; }
+		    80%{ opacity:0; }
+		    90%{ opacity:1; }*/
+		    100%{ opacity:0; }
+		}
+
+		/* The element to apply the animation to */
+		li {		    
+		    background-color: red;
+		    /*animation-name: rk_fade;*/
+		    animation-duration: 1s;
+		    animation-iteration-count: infinite;
+		    border: 10px dotted gray;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img class="rk_img" src="img/promocion-6-listado.jpg" alt=""></li>
+		<li><img class="rk_img" src="img/promociones-400x400.jpg" alt=""></li>
+		<li><img class="rk_img" src="img/promocion-11-listado.jpg" alt=""></li>
+		<li><img class="rk_img" src="img/list_11.jpg" alt=""></li>
+	</ul>
+	<script>
+		var ul = document.querySelector('ul');
+		fade(ul);
+		function rk_Shuffle(){
+			
+			
+			for (var i = ul.children.length; i >= 0; i--) {
+			    ul.appendChild(ul.children[Math.random() * i | 0]);
+			}	
+			unfade(ul);
+		}
+		setInterval(rk_Shuffle, 5000);
+
+
+
+		function fade(element) {
+		    var op = 1;  // initial opacity
+		    var timer = setInterval(function () {
+		        if (op <= 0.1){
+		            clearInterval(timer);
+		            element.style.display = 'none';
+		        }
+		        element.style.opacity = op;
+		        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+		        op -= op * 0.1;
+		    }, 50);
+		}
+		function unfade(element) {
+		    var op = 0.1;  // initial opacity
+		    element.style.display = 'block';
+		    var timer = setInterval(function () {
+		        if (op >= 1){
+		            clearInterval(timer);
+		        }
+		        element.style.opacity = op;
+		        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+		        op += op * 0.1;
+		    }, 10);
+		}
+
+	</script>
+</body>
+</html>
