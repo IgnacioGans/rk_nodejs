@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript</title>
+</head>
+<body>
+
+	<p id="intro">Hello World!</p>
+	<ul id="rk_ul">
+		<li>Objeto #1</li>
+		<li>Objeto #2</li>
+		<li>Objeto #3</li>
+		<li>Objeto #4</li>
+		<li>Objeto #5</li>
+	</ul>
+
+
+	<button id="rk_btn" type="button">Shuffle</button>
+
+
+	<label for="Remking">My name is: <span id="rk_name">Remking</span></label>
+	<p id="demo">sdafas</p>
+	<p id="demo2">sdafas</p>
+	<script>
+
+		var rk_input ="Remking_2018";
+		document.getElementById("rk_btn").addEventListener("click", function(){
+		    rk_Shuffle()
+		});
+
+
+
+		var ul = document.querySelector('ul');
+
+		function rk_Shuffle(){
+			for (var i = ul.children.length; i >= 0; i--) {
+			    ul.appendChild(ul.children[Math.random() * i | 0]);
+			}	
+		}
+
+
+		function reverse(str){
+		  var rtnStr = '';
+		  for(var i = str.length-1; i>=0;i--){
+		    rtnStr +=str[i];
+		  }
+		  return rtnStr;
+		}
+
+		var rk_msg = reverse(rk_input);
+
+		 console.log(rk_msg);
+
+
+		 var myElement = document.getElementById("rk_name").textContent;
+		 var rk_msg2 = reverse(myElement);
+		 document.getElementById("demo").innerHTML = "The text from the intro paragraph is " + rk_msg;
+		 document.getElementById("demo2").innerHTML = "The text from the intro paragraph is " + rk_msg2;
+
+
+	</script>
+
+</body>
+</html>
